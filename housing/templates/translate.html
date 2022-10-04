@@ -76,6 +76,17 @@
                     <h2><img src="{% static 'images/heading_icon.png' %}" alt="#"/><span class="yellow">Traducción</span> <br> <span class="appp_l">Proceso de Traducción de Textos</span></h2>
                     <p>Escribe en la siguiente caja de texto la oracion que requieres y el idioma a escoger</p>
                  </div>
+                 <form action = "" method="post">
+                 {% csrf_token %}
+                 <p> Pon Aqui el texto a traducir </p>
+                 {{translateform.text_to_translate}}
+                 <p> Texto traducido :D</p>
+                 {{translateform.language_code_destiny}}
+                 <div class="co-md-12l">
+                    <button class="send_btn">traducir</button>
+                 </div>
+                 </form>
+                 <p>{{responsetranslate}} </p>
               </div>
            </div>
         </div>

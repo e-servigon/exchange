@@ -18,5 +18,6 @@ from django.urls import path
 from housing import views
 
 urlpatterns = [
+     path('translate/', views.translate, name = 'translate')
 
 ]
