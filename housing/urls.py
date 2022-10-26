@@ -18,6 +18,7 @@ from django.urls import path
 from housing import views
 
 urlpatterns = [
-     path('translate/', views.translate, name = 'translate')
+     path('translate/', views.translate, name = 'translate'),
+     path('fotoupload/',views.fotoupload, name= 'fotoupload')
 
 ]

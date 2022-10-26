@@ -53,4 +53,16 @@ def translate (request):
         print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': ')))
     return render(request,'translate.html',context)
 
+def fotoupload(request):
+    imageform= FotoForm()
+    context={'imageform':imageform}
+    imagegallery=UploadFoto.objects.all()
+    context['imagegallery']=imagegallery
+    if request.method=='POST':
+        imageform=FotoForm(request.POST,request.FILES)
+        print(request.FILES)
+        if imageform.is_valid():
+            imageform.save()
+    return render(request,'fotoupload.html',context)
+    
 

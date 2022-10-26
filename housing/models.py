@@ -11,3 +11,6 @@ class TranslateTexts(models.Model):
 
     def __str__ (self):
         return 'el texto traducido es %s %s' % (self.language_code_destiny, self.text_translated)
+
+class UploadFoto(models.Model):
+    image_to_upload=models.ImageField(upload_to='')
