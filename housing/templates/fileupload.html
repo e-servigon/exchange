@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- service section -->
+    <div class="service">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="titlepage">
+                    <h2><img src="{% static 'images/heading_icon.png' %}" alt="#"/><span class="yellow">Galeria de Fotos</span> <br> <span class="appp_l">Proceso de subida de fotos</span></h2>
+                    <p>Este proceso seleccionara una foto y la subira como galeria</p>
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="service_box">
+                    <i><img class= "service_image" src="{% static 'images/translate.png' %}" alt="#"/></i>
+                    <div class="service_text">
+                       <h3> Subida Fotos </h3>
+                        <form action = "" method = "post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{imageform.file_to_upload}}
+                            <div class="col-md-12">
+                            <button class="send_btn">Subir fotos</button>
+                            </div>
+                       </form>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                   <div class="titlepage">
+                      <h2>Fotos Resultantes </h2>
+                   </div>
+                   {% for i in imagegallery %}
+                   <img src="{{ i.file_to_upload.url }}" >
+                   {% empty %}
+                   <p>No hay fotos</p>
+                   {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- end service section -->
+    
+{% endblock %}

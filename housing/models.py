@@ -3,14 +3,25 @@ from django.db import models
 # Create your models here.
 
 class TranslateTexts(models.Model):
-    TYPE_LANGUAGE_CHOICE = [('en', 'english'), ('fr', 'france'), ('de', 'deutch')]
+    TYPE_LANGUAGE_CHOICES = [("en","English"), ("fr","Francais"), ("de", "Deutch"), ("zh-Hans","Chinesse")]
     language_code_origin = models.CharField(max_length=2)
-    language_code_destiny = models.CharField(max_length=2, choices=TYPE_LANGUAGE_CHOICE)
+    language_code_destiny = models.CharField(max_length=7, choices= TYPE_LANGUAGE_CHOICES)
     text_to_translate = models.CharField(max_length=255)
     text_translated = models.CharField(max_length=255)
 
     def __str__ (self):
         return 'el texto traducido es %s %s' % (self.language_code_destiny, self.text_translated)
 
-class UploadFoto(models.Model):
-    image_to_upload=models.ImageField(upload_to='')
+class SentimentTexts(models.Model):
+    text_to_analyze = models.CharField(max_length=255)
+
+    def __str__ (self):
+            return 'el texto analizado es %s %s' % (self.text_to_analyze, self.sentiment_result)
+
+class uploadfolder(models.Model):
+    file_to_upload = models.ImageField(upload_to='')
+
+class EmailUser(models.Model):
+    email_user = models.CharField(max_length=100)
+
+

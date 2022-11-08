@@ -24,10 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zu7j2=5wplr+m8%9ih5^y5-+g^^jo+v09-sl+2ham1yr&l2rx4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -77,18 +76,17 @@ WSGI_APPLICATION = 'exchange.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'exchange',
-        'USER': 'dscadmin',
-        'PASSWORD': 'scd2022a!',
-        'HOST': 'dsc2022jacobo.mysql.database.azure.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'dsc_exchange',  
+        'USER': 'dscadmin',  
+        'PASSWORD': 'Intellego$45',  
+        'HOST': 'dscmysql2022.mysql.database.azure.com',  
+        'PORT': '3306',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" 
         }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -120,14 +118,24 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'housing/static')]
-MEDIA_URL='media/'
-MEDIA_ROOT= os.path.join(BASE_DIR, 'housing/media')
+if DEBUG:
+    STATICFILES_DIR = [os.path.join(BASE_DIR, '/housing/static')]
+else:
+    STATIC_ROOT =  [os.path.join(BASE_DIR, '/housing/static')]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '/housing/media')
+
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ernestoservigon@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

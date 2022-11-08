@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- service section -->
+    <div class="service">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="titlepage">
+                    <h2><img src="{% static 'images/heading_icon.png' %}" alt="#"/><span class="yellow">Email</span> <br> <span class="appp_l">Envio de emails</span></h2>
+                    <p>Este proceso pone una direccion de correo y la envia</p>
+                 </div>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="service_box">
+                    <i><img class= "service_image" src="{% static 'images/translate.png' %}" alt="#"/></i>
+                    <div class="service_text">
+                       <h3> Envio de correo </h3>
+                       <form action = "" method = "post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <p>Pon aqui el correo<p>
+                                {{emailform.email_user}}
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-md-12">
+                            <button class="send_btn">Enviar mail</button>
+                        </div>
+                        </form>
+                    </div>
+                 </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+     <!-- end service section -->
+    
+{% endblock %}

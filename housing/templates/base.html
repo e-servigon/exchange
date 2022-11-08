@@ -1,4 +1,5 @@
-{%load static%}
+{% load static %}
+
 <html lang="en">
 <head>
       <!-- basic -->
@@ -55,15 +56,17 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="{% url 'home' %} ">Home</a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{% url 'translate' %} ">Translate</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'translate' %} ">Traduccion</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'sentiment' %} ">Analisis de Sentimientos</a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="">Sentiment Analysis</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'fileupload' %} ">File Upload</a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{%url 'fotoupload' %}">Photo Upload</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'emails' %} ">Emails</a>
                             </li>
                         </ul>
                     </div>
@@ -74,48 +77,51 @@
         </div>
     </header>
 
-   {% block content %}
+{% block content %}
 
-   {% endblock %}
+{% endblock %}
 
-   <button class="open-button" onclick=openForm()>exchange bot</button>
-   <div class="Chat-Popup" id="chatbotpanel">
-       <form class="form-chatbot">
-       <iframe src='https://webchat.botframework.com/embed/dsccoglanguage-bot_eservigon?s=ENfOMpFkYPI.rRoCv-fsdz7vmtfgrue3pq2agdy3gvxMYWXfV8TSBiE'></iframe>
-       <button class="btn_cancel" onclick=closeForm()>cerrar bot</button>
-   </form>
+ <!-- bot section -->
 
-   </div>
+ <button class="open-button" onclick=openForm()>Exchange Bot!</button>
 
-      <!-- Javascript files-->
-   <script src="{% static 'js/jquery.min.js' %}"></script>
-   <script src="{% static 'js/popper.min.js' %}"></script>
-   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-   <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
-   <!-- sidebar -->
-   <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
-   <script src="{% static 'js/custom.js' %}"></script>
-   <script>
-         function openNav() {
-           document.getElementById("mySidepanel").style.width = "250px";
-         }
-         
-         function closeNav() {
-           document.getElementById("mySidepanel").style.width = "0";
-         }
-         function openForm() {
-           document.getElementById("chatbotpanel").style.display = "block";
+ <div class="chat-popup" id="chatbotpanel">
+     <form class="form-chatbot" > 
+         <iframe class = "chatbot-window" src='https://webchat.botframework.com/embed/dsccoglanguage-bot_eservigon?s=ENfOMpFkYPI.rRoCv-fsdz7vmtfgrue3pq2agdy3gvxMYWXfV8TSBiE'></iframe>
+         <button type="button" class="btn_cancel" onclick=closeForm()>Cerrar Bot</button>
+     </form>
+  </div>
+ 
+ <!-- end bot section -->
 
-         }
-         function closeForm() {
-           document.getElementById("chatbotpanel").style.display = "none";
-
-         }
-
-
-   </script>
-
-
-
+ <!-- Javascript files-->
+ <script src="{% static 'js/jquery.min.js' %}"></script>
+ <script src="{% static 'js/popper.min.js' %}"></script>
+ <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+ <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+ <!-- sidebar -->
+ <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+ <script src="{% static 'js/custom.js' %}"></script>
+ 
+ <script>
+       function openNav() {
+         document.getElementById("mySidepanel").style.width = "250px";
+       }
+       
+       function closeNav() {
+         document.getElementById("mySidepanel").style.width = "0";
+       }
+ </script>
+ 
+  <!-- BotScript files-->
+ <script>
+ function openForm() {
+   document.getElementById("chatbotpanel").style.display = "block";
+ }
+ 
+ function closeForm() {
+   document.getElementById("chatbotpanel").style.display = "none";
+ }
+ </script>
+ 
 </body>
-
